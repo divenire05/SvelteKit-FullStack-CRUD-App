@@ -2,11 +2,23 @@
     let email = "";
     let password = "";
     let confirmPass = "";
+    let error = false;
+    let register = false;
+
+    function handleAuthenticate() {
+        if (!email || !password || (register && !confirmPass)) {
+            error = true;
+            return
+        }
+    }
 </script>
 
 <div class="authContainer">
     <form>
-        <h1>Login</h1>
+        <h1>{register ? 'Register' : 'Login'}</h1>
+        {#if error}
+            <p class="error">The information you have entered is not correct</p>
+        {/if}
         <label>
             <p class={email ? " above" : " center"}>Email</p>
             <input bind:value={email} type="email" placeholder="Email"/>
@@ -21,6 +33,20 @@
         </label>
         <button>Submit</button>
     </form>
+    <div class="options">
+        <p>Or</p>
+        {#if register}
+            <div>
+                <p>Already have an account?</p>
+                <p>Login</p>
+            </div>
+        {:else}
+            <div>
+                <p>Don't have an account?</p>
+                <p>Register</p>
+            </div>
+        {/if}
+    </div>
 </div>
 
 <style>
@@ -30,16 +56,20 @@
         align-items: center;
         justify-content: center;
         flex: 1;
+        padding: 24px;
     }
 
     form {
         display: flex;
         flex-direction: column;
         gap: 14px;
+    }
+
+    form, 
+    .options {
         width: 400px;
         max-width: 100%;
         margin: 0 auto;
-        padding: 24px;
     }
 
     form input {
@@ -55,6 +85,10 @@
         position: relative;
         border: solid navy 1px;
         border-radius: 5px;
+    }
+
+    form label:focus-within {
+        border-color: blue;
     }
 
     form input {
@@ -108,4 +142,5 @@
         border: 1px solid transparent;
         opacity: 0;
     }
+
 </style>
