@@ -152,6 +152,9 @@
         padding: 14px 0;
         overflow: hidden;
         font-size: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
     }
 
     .options > p {
@@ -179,5 +182,17 @@
     
     .options > p::before {
         left: 100%;
+    }
+
+    .options div {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .options div p:last-of-type {
+        color: cyan;
+        cursor: pointer;
     }
 </style>
