@@ -143,4 +143,41 @@
         opacity: 0;
     }
 
+    .error {
+        color: coral;
+        font-size: 0.9rem;
+    }
+
+    .options {
+        padding: 14px 0;
+        overflow: hidden;
+        font-size: 0.9rem;
+    }
+
+    .options > p {
+        position: relative;
+        text-align: center;
+        width: fit-content;
+        margin: 0 auto;
+        padding: 0 8px;
+    }
+
+    .options > p::after,
+    .options > p::before {
+        position: absolute;
+        content: "";
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100vw;
+        height: 1.5px;
+        background: white;
+    }
+
+    .options > p::after {
+        right: 100%;
+    }
+    
+    .options > p::before {
+        left: 100%;
+    }
 </style>
